@@ -670,7 +670,7 @@ class webull :
         data = {
             "modifyOrders": [
                 {
-                    "shortSupport": true,
+                    "shortSupport": True,
                     "orderType": "STP",
                     "timeInForce": stop_loss_order['timeInForce'],
                     "quantity": stop_loss_order['totalQuantity'],
@@ -684,7 +684,7 @@ class webull :
                     "serialId": str(uuid.uuid4())
                 },
                 {
-                    "shortSupport": true,
+                    "shortSupport": True,
                     "orderType": "LMT",
                     "timeInForce": profit_take_order['timeInForce'],
                     "quantity": profit_take_order['totalQuantity'],
