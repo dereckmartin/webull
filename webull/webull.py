@@ -660,6 +660,53 @@ class webull :
         # print('Resp: {}'.format(response))
         return response.json()
 
+
+    def modify_combo_order(self, stop_loss_order = None, profit_take_order = None, ext=False) :
+        '''
+        modifyComborOrder: Updates Stop-loss/Profit-take combo orders
+        '''
+        headers = self.build_req_headers(include_trade_token=True, include_time=True)
+
+        data = {
+            "modifyOrders": [
+                {
+                    "shortSupport": true,
+                    "orderType": "STP",
+                    "timeInForce": stop_loss_order['timeInForce'],
+                    "quantity": stop_loss_order['totalQuantity'],
+                    "outsideRegularTradingHour": ext,
+                    "action": 'SELL',
+                    "tickerId": self.get_ticker(ticker),
+                    "lmtPrice": null,
+                    "comboType": "STOP_LOSS",
+                    "orderId": stop_loss_order['orderId'],
+                    "auxPrice": str(stop_loss_order['auxPrice']),
+                    "serialId": str(uuid.uuid4())
+                },
+                {
+                    "shortSupport": true,
+                    "orderType": "LMT",
+                    "timeInForce": profit_take_order['timeInForce'],
+                    "quantity": profit_take_order['totalQuantity'],
+                    "outsideRegularTradingHour": ext,
+                    "action": "SELL",
+                    "tickerId": self.get_ticker(ticker),
+                    "lmtPrice": str(profit_take_order['lmtPrice']),
+                    "comboType": "STOP_PROFIT",
+                    "orderId": str(profit_take_order['orderId']),
+                    "auxPrice": null,
+                    "serialId": str(uuid.uuid4())
+                }
+            ],
+            "serialId": str(uuid.uuid4())
+        }
+
+        response = requests.post(self._urls.modify_combo_orders(self._account_id), json=data, headers=headers, timeout=self.timeout)
+
+        # print('Resp: {}'.format(response))
+        return response.json()
+
+    
     def cancel_order_otoco(self, combo_id=''):
         '''
         Retract an otoco order. Cancelling the MASTER order_id cancels the sub orders.
