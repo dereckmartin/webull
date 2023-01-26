@@ -693,7 +693,7 @@ class webull :
                     "tickerId": self.get_ticker(ticker),
                     "lmtPrice": str(profit_take_order['lmtPrice']),
                     "comboType": "STOP_PROFIT",
-                    "orderId": str(profit_take_order['order_id']),
+                    "orderId": str(profit_take_order['orderId']),
                     "auxPrice": null,
                     "serialId": str(uuid.uuid4())
                 }
