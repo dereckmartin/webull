@@ -65,7 +65,7 @@ class urls :
     def cancel_order(self, account_id):
         return f'{self.base_ustrade_url}/trade/order/{account_id}/cancelStockOrder/'
 
-    def modify_combo_order(self,account_id):
+    def modify_combo_orders(self,account_id):
     
     def modify_otoco_orders(self, account_id):
         return f'{self.base_ustrade_url}/trade/v1/webull/order/comboOrderModify?secAccountId={account_id}'
