@@ -690,7 +690,7 @@ class webull :
                     "quantity": profit_take_order['totalQuantity'],
                     "outsideRegularTradingHour": ext,
                     "action": "SELL",
-                    "tickerId": stop_loss_order['ticker']['tickerId'],
+                    "tickerId": profit_take_order['ticker']['tickerId'],
                     "lmtPrice": str(profit_take_order['lmtPrice']),
                     "comboType": "STOP_PROFIT",
                     "orderId": str(profit_take_order['orderId']),
