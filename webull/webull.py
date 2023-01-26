@@ -677,7 +677,7 @@ class webull :
                     "outsideRegularTradingHour": ext,
                     "action": 'SELL',
                     "tickerId": stop_loss_order['ticker']['tickerId'],
-                    "lmtPrice": null,
+                    "lmtPrice": None,
                     "comboType": "STOP_LOSS",
                     "orderId": stop_loss_order['orderId'],
                     "auxPrice": str(stop_loss_order['auxPrice']),
@@ -694,7 +694,7 @@ class webull :
                     "lmtPrice": str(profit_take_order['lmtPrice']),
                     "comboType": "STOP_PROFIT",
                     "orderId": str(profit_take_order['orderId']),
-                    "auxPrice": null,
+                    "auxPrice": None,
                     "serialId": str(uuid.uuid4())
                 }
             ],
